@@ -23,7 +23,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(),
             'slug' =>  $this->faker->slug(),
             'subtitle' => $this->faker->text(),
-            'content' => $this->faker->paragraph(),
+            'content' => $this->faker->realText(500),
             'image' => $this->faker->imageUrl(),
             'publish' => $this->faker->boolean(),
             'user_id' => User::pluck('id')->random(),

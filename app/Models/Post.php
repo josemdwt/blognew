@@ -32,11 +32,6 @@ class Post extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
-    public function tags()
-    {
-        return $this->hasMany(Tags::class);
-    }
-
     public function comments()
     {
         return $this->hasMany(Comment::class);
@@ -45,5 +40,10 @@ class Post extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class, 'posts_tags');
     }
 }

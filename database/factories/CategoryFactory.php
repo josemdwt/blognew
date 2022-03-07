@@ -27,7 +27,7 @@ class CategoryFactory extends Factory
         return [
             'parent_id'=> $this->faker->randomElement([1,0]),
             'name' => $this->faker->word(),
-            'description' => $this->faker->paragraph(),
+            'description' => $this->faker->paragraph(2),
             'image_url' => $this->faker->imageUrl()
         ];
     }

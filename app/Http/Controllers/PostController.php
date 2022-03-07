@@ -16,7 +16,7 @@ class PostController extends Controller
     {
         $posts = Post::with('categories')->with('countries')->with('user')->get();
 
-        return view('front.posts.list', compact('posts'));
+        return view('front.posts.index', compact('posts'));
     }
 
     /**

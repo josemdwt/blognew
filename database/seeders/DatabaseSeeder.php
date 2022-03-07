@@ -28,5 +28,14 @@ class DatabaseSeeder extends Seeder
         Post::factory(10)->create();
         Comment::factory(10)->create();
         Media::factory(10)->create();
+
+        $tags = Tag::all();
+
+        // Populate the pivot table
+        Post::all()->each(function ($post) use ($tags) {
+            $post->tags()->attach(
+                $tags->random(rand(1, 5))->pluck('id')->toArray()
+            );
+        });
     }
 }

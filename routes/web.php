@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,4 +30,8 @@ Route::controller(PostController::class)->prefix('noticias')->group(function () 
     Route::get('/paises', 'countries');
     Route::get('/{id}', 'show')->whereNumber('id');
 
+});
+
+Route::middleware(['auth:sanctum', 'verified'])->prefix('/admin')->group(function () {
+    Route::get('/categorias/crear', [CategoryController::class, 'create']);
 });

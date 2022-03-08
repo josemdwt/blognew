@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-margin>
     <div class="container px-6 mx-auto my-24">
 
         <!-- Section: Design Block -->
@@ -29,5 +29,5 @@
         <!-- Section: Design Block -->
 
       </div>
-</x-guest-layout>
+    </x-guest-margin>
 

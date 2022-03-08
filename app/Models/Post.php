@@ -22,6 +22,10 @@ class Post extends Model
         'country_id'
     ];
 
+    protected $guarded = [
+        'id'
+    ];
+
     public function countries()
     {
         return $this->belongsTo(Country::class, 'country_id');

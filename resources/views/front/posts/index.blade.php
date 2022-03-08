@@ -11,6 +11,9 @@
                     <thead class="border-b">
                         <tr>
                             <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
+                                ID
+                            </th>
+                            <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
                                 Title
                             </th>
                             <th scope="col" class="px-6 py-4 text-sm font-medium text-left text-gray-900">
@@ -28,7 +31,7 @@
                         @foreach ($posts as $post)
                             <tr class="border-b">
                                 <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap">
-                                    1</td>
+                                    {{ $post->id }}</td>
                                 <td class="px-6 py-4 text-sm font-light text-gray-900 whitespace-nowrap">
                                     {{ $post->title }}
                                 </td>
@@ -48,10 +51,4 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
-
 </x-guest-margin>
-

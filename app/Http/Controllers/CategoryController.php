@@ -27,6 +27,17 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        //return $request->all();
+        Category::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'parent_id' => $request->parent_id,
+
+        ]);
+
+        session()->flash('message', 'El registro fue creado correctamente');
+
+        return redirect(route('categories.create'));
+
     }
 }

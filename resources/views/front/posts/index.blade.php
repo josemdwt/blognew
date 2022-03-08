@@ -1,8 +1,10 @@
 <x-guest-margin>
 
+
     <h2 class="text-xl font-semibold leading-tight text-gray-800">
         {{ __('Lista de  Post') }}
     </h2>
+
 
     <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
         <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">

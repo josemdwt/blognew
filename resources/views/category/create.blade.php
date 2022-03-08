@@ -4,6 +4,17 @@
         {{ __('Crear Categoría') }}
     </h2>
 
+    @if(Session::has('message'))
+    <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('message') }}</p>
+    @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            Please check the form below for errors
+        </div>
+    @endif
+
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
             <form method="POST" action="{{ route('categories.store') }}">
@@ -18,8 +29,8 @@
                 <label class="text-sm font-bold uppercase opacity-70">Main Category</label>
                 <select name="parent_id"
                     class="w-full p-3 mt-2 mb-4 border-2 rounded bg-slate-200 border-slate-200 focus:border-slate-600 focus:outline-none">
-                    @foreach($categories as $category)
-                        <option value="{{ $category->id }}">{{  $category->name  }}</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
                 <label class="text-sm font-bold uppercase opacity-70">Image</label>

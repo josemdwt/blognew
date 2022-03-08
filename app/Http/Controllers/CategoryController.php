@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {
@@ -35,7 +36,7 @@ class CategoryController extends Controller
 
         ]);
 
-        session()->flash('message', 'El registro fue creado correctamente');
+        Session::flash('message', 'Se ha guardado correctamente en base de datos');
 
         return redirect(route('categories.create'));
 

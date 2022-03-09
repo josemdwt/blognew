@@ -17,7 +17,7 @@
 
     <div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-            <form method="POST" action="{{ route('categories.store') }}">
+            <form method="POST" action="{{ route('categories.store') }}" enctype="multipart/form-data">
 
                 @csrf
 
@@ -34,7 +34,7 @@
                     @endforeach
                 </select>
                 <label class="text-sm font-bold uppercase opacity-70">Image</label>
-                <input type="file" name="image" class="w-full p-3 mt-2 mb-4 rounded bg-slate-200">
+                <input type="file" name="image_url" class="w-full p-3 mt-2 mb-4 rounded bg-slate-200">
                 <input type="submit"
                     class="px-6 py-3 my-2 font-medium text-white duration-300 ease-in-out rounded cursor-pointer bg-emerald-500 hover:bg-indigo-500"
                     value="Send">

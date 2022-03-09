@@ -55,7 +55,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //return $request->all();
+        return $request->all();
 
         $path= null;
 
@@ -76,4 +76,52 @@ class CategoryController extends Controller
         return redirect(route('categories.create'));
     }
 
+        /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $categories = Category::all();
+        $category = Category::findOrFail($id);
+        return view('category.edit', compact('category', 'categories'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $category = Category::findOrFail($id);
+
+        $category->update([
+            'name' => $request->name,
+            'description' => $request->description,
+            'parent_id' => $request->parent_id
+        ]);
+
+        Session::flash('message', 'Se ha guardado correctamente en base de datos');
+
+        return redirect(route('categories.edit', $id ));
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return "categoría borrada";
+
+    }
 }

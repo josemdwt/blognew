@@ -41,4 +41,7 @@ Route::controller(CategoryController::class)->prefix('categorias')->group(functi
 Route::middleware(['auth:sanctum', 'verified'])->prefix('/admin')->group(function () {
     Route::get('/categorias/crear', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categorias/crear', [CategoryController::class, 'store'])->name('categories.store');
+    Route::get('/categorias/editar/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
+    Route::put('/categorias/editar/{id}', [CategoryController::class, 'update'])->name('categories.update');
+    Route::post('/categorias/borrar/{id}', [CategoryController::class, 'delete'])->name('categories.delete');
 });

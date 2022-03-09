@@ -32,6 +32,12 @@ Route::controller(PostController::class)->prefix('noticias')->group(function () 
 
 });
 
+Route::controller(CategoryController::class)->prefix('categorias')->group(function () {
+    Route::get('/', 'index');
+    Route::get('/{id}', 'show')->whereNumber('id');
+
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->prefix('/admin')->group(function () {
     Route::get('/categorias/crear', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categorias/crear', [CategoryController::class, 'store'])->name('categories.store');

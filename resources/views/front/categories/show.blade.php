@@ -11,7 +11,7 @@
           </p>
 
           <div class="mt-2">
-            <img src="{{ $category->image_url }}">
+            <img src="{{ asset('/storage/' .$category->image_url) }}">
         </div>
 
       </div>

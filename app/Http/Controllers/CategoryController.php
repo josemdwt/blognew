@@ -6,6 +6,7 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\File;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -55,19 +56,19 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        return $request->all();
+        //return $request->all();
 
         $path= null;
 
         if($request->file('image_url')){
-            $path = $request->file('image_url')->store('public/categories');
+            $path = Storage::disk('public')->put('categories', $request->file('image_url'));
         }
 
         Category::create([
             'name' => $request->name,
             'description' => $request->description,
             'parent_id' => $request->parent_id,
-            'image_url' =>  env('APP_URL') . '/storage/' .$path
+            'image_url' => $path
 
         ]);
 

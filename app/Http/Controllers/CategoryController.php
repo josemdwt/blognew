@@ -60,6 +60,11 @@ class CategoryController extends Controller
 
         $path= null;
 
+        $validated = $request->validate([
+            'name' => 'required|max:255',
+            'description' => 'required',
+        ]);
+
         if($request->file('image_url')){
             $path = Storage::disk('public')->put('categories', $request->file('image_url'));
         }

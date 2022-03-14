@@ -18,9 +18,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $category = Category::all();
+        $categories = Category::all();
 
-        return view('front.category.index', compact('category'));
+        return view('category.index', compact('categories'));
     }
 
     /**
@@ -118,11 +118,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy($id)
     {
+        $category = Category::findOrFail($id);
         $category->delete();
 
-        return "categoría borrada";
+        Session::flash('message', 'Se ha borrado correctamente en base de datos');
+
+        return redirect(route('categories.index'));
 
     }
 }

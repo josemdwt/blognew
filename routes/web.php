@@ -33,15 +33,15 @@ Route::controller(PostController::class)->prefix('noticias')->group(function () 
 });
 
 Route::controller(CategoryController::class)->prefix('categorias')->group(function () {
-    Route::get('/', 'index');
     Route::get('/{id}', 'show')->whereNumber('id');
 
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->prefix('/admin')->group(function () {
+    Route::get('/categorias/lista', [CategoryController::class, 'index'])->name('categories.index');
     Route::get('/categorias/crear', [CategoryController::class, 'create'])->name('categories.create');
     Route::post('/categorias/crear', [CategoryController::class, 'store'])->name('categories.store');
     Route::get('/categorias/editar/{id}', [CategoryController::class, 'edit'])->name('categories.edit');
     Route::put('/categorias/editar/{id}', [CategoryController::class, 'update'])->name('categories.update');
-    Route::post('/categorias/borrar/{id}', [CategoryController::class, 'delete'])->name('categories.delete');
+    Route::delete('/categorias/borrar/{id}', [CategoryController::class, 'destroy'])->name('categories.delete');
 });
